@@ -1,0 +1,24 @@
+<ion-content class="ion-padding">
+  <div class="header-title">
+    Iniciar Sesion
+    <div class="subtitle">Aqui comienza todo</div>
+    <div class="welcome">Bienvenido</div>
+  </div>
+
+  <ion-item>
+    <ion-label position="stacked">Usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+
+  <ion-button expand="full" color="secondary" (click)="crearCuenta()">Crear cuenta</ion-button>
+
+  <!-- Agregar el enlace para "¿Olvidaste tu contraseña?" -->
+  <ion-button expand="full" fill="clear" color="medium" (click)="olvidasteContrasena()">¿Olvidaste tu contraseña?</ion-button>
+</ion-content>

@@ -1,0 +1,63 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>METRÓNOMO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-grid class="content-grid">
+    <ion-row class="row">
+      <ion-col size="4">
+        <ion-button shape="round" (click)="increaseBPM()">+</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button shape="round" (click)="decreaseBPM()">-</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <div class="custom-box">
+          <ion-item>
+            <ion-label>{{ sliderValue }}</ion-label>
+            <ion-input type="number" [(ngModel)]="sliderValue"></ion-input>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row">
+      <ion-col>
+        <ion-range class="tempo-variation" [(ngModel)]="tempoVariation" (ionChange)="onSliderChange($event)">
+          <ion-label slot="start">Lento</ion-label>
+          <ion-label slot="end">Rápido</ion-label>
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row">
+      <ion-col>
+        <ion-range class="volume" [(ngModel)]="volume">
+          <ion-label slot="start">Silencio</ion-label>
+          <ion-label slot="end">Máximo</ion-label>
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row">
+      <ion-col size="6">
+        <div class="custom-box">
+          <ion-item>
+            <ion-label>Métrica:</ion-label>
+            <ion-select [(ngModel)]="metric">
+              <ion-select-option value="4/4">4/4</ion-select-option>
+              <ion-select-option value="6/8">6/8</ion-select-option>
+              <!-- Agrega más opciones según tus necesidades -->
+            </ion-select>
+          </ion-item>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <ion-toggle [(ngModel)]="metronomeOn" (ionChange)="toggleMetronome()">ON/OFF</ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>  
+
+<audio #clickSound hidden>
+  <source src="assets/BEAT.mp3" type="audio/mpeg">
+</audio>

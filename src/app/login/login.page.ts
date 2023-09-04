@@ -20,18 +20,19 @@ export class LoginPage {
   login() {
     // Expresión regular para validar la contraseña
     const passwordPattern = /^(?=.*\d{4})(?=.*[a-zA-Z]{3})(?=.*[A-Z]).{8,}$/;
-
-    if (
-      this.username.length >= 3 &&
-      this.username.length <= 8 &&
-      passwordPattern.test(this.password)
-    ) {
-      localStorage.setItem('username', this.username); // Almacenar el nombre de usuario en el almacenamiento local
-      this.router.navigate(['/home']);
+  
+    if (this.username.length >= 3 && this.username.length <= 8) {
+      if (passwordPattern.test(this.password)) {
+        localStorage.setItem('username', this.username);
+        this.router.navigate(['/home']);
+      } else {
+        this.showToast('La contraseña debe cumplir con los requisitos.');
+      }
     } else {
-      this.showToast('Credenciales inválidas');
+      this.showToast('El nombre de usuario debe tener entre 3 y 8 caracteres.');
     }
   }
+  
 
   async showToast(message: string) {
     const toast = await this.toastCtrl.create({

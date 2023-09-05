@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-resetpass',
   templateUrl: './resetpass.page.html',
@@ -16,7 +15,7 @@ export class ResetpassPage {
   enviarCorreo() {
     if (!this.isValidEmail(this.email)) {
       this.mostrarToast('Por favor, ingresa una dirección de correo electrónico válida.');
-      return; // No se enviará el correo si la dirección de correo electrónico no es válida.
+      return; 
     }
     this.mostrarToast('Se ha enviado un enlace de restablecimiento de contraseña a tu correo electrónico.');
     this.router.navigate(['/login']);
@@ -25,13 +24,13 @@ export class ResetpassPage {
   async mostrarToast(message: string) {
     const toast = await this.toastCtrl.create({
       message: message,
-      duration: 5000, // Duración del mensaje en milisegundos (5 segundos en este caso)
+      duration: 5000, 
       position: 'top',
     });
     await toast.present();
   }
 
-  // Función para verificar si el correo electrónico es válido
+  
   isValidEmail(email: string): boolean {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email);

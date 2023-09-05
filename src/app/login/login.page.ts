@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -20,7 +21,7 @@ export class LoginPage {
   login() {
     // Expresión regular para validar la contraseña
     const passwordPattern = /^(?=.*\d{4})(?=.*[a-zA-Z]{3})(?=.*[A-Z]).{8,}$/;
-  
+
     if (this.username.length >= 3 && this.username.length <= 8) {
       if (passwordPattern.test(this.password)) {
         localStorage.setItem('username', this.username);
@@ -32,7 +33,7 @@ export class LoginPage {
       this.showToast('El nombre de usuario debe tener entre 3 y 8 caracteres.');
     }
   }
-  
+
 
   async showToast(message: string) {
     const toast = await this.toastCtrl.create({

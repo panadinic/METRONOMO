@@ -13,12 +13,19 @@ export class HomePage {
   metric: string = '4/4';
   metronomeOn: boolean = false;
 
+  username: string = '';
   @ViewChild('clickSound') clickSound: any;
 
   private interval: any;
   private isPlaying: boolean = false;
 
-  constructor(private platform: Platform) {}
+  constructor(private platform: Platform) {
+
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      this.username = storedUsername;
+    }
+  }
 
   increaseBPM() {
     // Implementa la lógica para aumentar el volumen
@@ -42,7 +49,7 @@ export class HomePage {
 
   toggleMetronome() {
     this.metronomeOn = !this.metronomeOn;
-  
+
     if (this.metronomeOn) {
       this.startMetronome();
     } else {
@@ -53,7 +60,7 @@ export class HomePage {
      if (this.isPlaying) return;
 
     this.stopMetronome();
-       
+
     const bpm = this.sliderValue;
     const intervalMs = (60 / bpm) * 1000;
 
@@ -85,4 +92,3 @@ export class HomePage {
     }
   }
 }
-  

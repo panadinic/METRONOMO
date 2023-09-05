@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import {  NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,7 @@ export class HomePage {
   private interval: any;
   private isPlaying: boolean = false;
 
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private navCtrl: NavController ) {
 
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
@@ -90,5 +92,8 @@ export class HomePage {
       this.clickSound.nativeElement.volume = this.volume / 100;
       this.clickSound.nativeElement.play();
     }
+  }
+  volver() {
+    this.navCtrl.navigateBack(['/login']);
   }
 }

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true">
+<ion-content class="ion-padding fade-in" fullscreen="true">
   <ion-grid class="content-grid">
     <ion-row class="row">
       <ion-col size="4">
@@ -45,6 +45,7 @@
             <ion-label>Métrica:</ion-label>
             <ion-select [(ngModel)]="metric">
               <ion-select-option value="4/4">4/4</ion-select-option>
+              <ion-select-option value="3/4">4/4</ion-select-option>
               <ion-select-option value="6/8">6/8</ion-select-option>
               <!-- Agrega más opciones según tus necesidades -->
             </ion-select>

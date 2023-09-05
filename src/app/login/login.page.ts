@@ -18,6 +18,8 @@ export class LoginPage {
     private toastCtrl: ToastController
   ) {}
 
+
+
   login() {
     // Expresión regular para validar la contraseña
     const passwordPattern = /^(?=.*\d{4})(?=.*[a-zA-Z]{3})(?=.*[A-Z]).{8,}$/;

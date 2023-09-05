@@ -15,28 +15,6 @@ export class RegisterPage {
 
   constructor(private navCtrl: NavController, private toastCtrl: ToastController) {}
 
-  // enviarRegistro() {
-  //   const fechaNacimientoDate = new Date(this.fechaNacimiento);
-  //   const hoy = new Date();
-  //   hoy.setDate(hoy.getDate() - 1);
-  //   // Validar campos del formulario (agrega tu lógica de validación aquí)
-  //   console.log(this.correo);
-
-  //   if (this.usuario.length >= 3 && this.contrasena.length >= 8 && fechaNacimientoDate <= hoy && this.contrasena === this.recontrasena) {
-  //     // Aquí debes implementar la lógica para guardar el usuario y la contraseña
-  //     // Puedes utilizar un servicio, almacenamiento local o enviar los datos a tu servidor.
-
-  //     // Mostrar un mensaje de éxito
-  //     this.mostrarToast('Registro exitoso');
-
-  //     // Redirigir a la página de inicio de sesión u otra página necesaria
-  //     this.navCtrl.navigateForward(['/login']);
-  //   } else {
-  //     // Mostrar un mensaje de error si los campos no cumplen con los requisitos
-  //     this.mostrarToast('Verifica tus datos e intenta nuevamente');
-  //   }
-  // }
-
   enviarRegistro() {
     const fechaNacimientoDate = new Date(this.fechaNacimiento);
     const hoy = new Date();

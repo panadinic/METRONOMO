@@ -14,10 +14,10 @@ export class ResetpassPage {
   constructor(private navCtrl: NavController, private toastCtrl: ToastController, private router: Router) {}
 
   enviarCorreo() {
-    // Aquí debes implementar la lógica para enviar un correo de restablecimiento de contraseña.
-    // Puedes utilizar un servicio de envío de correo o cualquier otro método de tu backend.
-
-    // Ejemplo de una notificación de éxito
+    if (!this.isValidEmail(this.email)) {
+      this.mostrarToast('Por favor, ingresa una dirección de correo electrónico válida.');
+      return; // No se enviará el correo si la dirección de correo electrónico no es válida.
+    }
     this.mostrarToast('Se ha enviado un enlace de restablecimiento de contraseña a tu correo electrónico.');
     this.router.navigate(['/login']);
   }
@@ -29,5 +29,11 @@ export class ResetpassPage {
       position: 'top',
     });
     await toast.present();
+  }
+
+  // Función para verificar si el correo electrónico es válido
+  isValidEmail(email: string): boolean {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
   }
 }

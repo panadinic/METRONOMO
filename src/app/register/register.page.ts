@@ -69,8 +69,8 @@ export class RegisterPage {
       // Redirigir a la página de inicio de sesión u otra página necesaria
       this.navCtrl.navigateForward(['/login']);
     } else {
-      // Mostrar un mensaje de error con el detalle del problema
-      this.mostrarToast(mensajeError);
+      // Mostrar un mensaje de error si los campos no cumplen con los requisitos
+      this.mostrarToast('Verifica tus datos e intenta nuevamente');
     }
   }
 

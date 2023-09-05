@@ -20,19 +20,21 @@ export class RegisterPage {
     const hoy = new Date();
     hoy.setDate(hoy.getDate() - 1);
 
+    // Expresión regular para validar el correo electrónico
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
     // Variables para almacenar mensajes de error
     let mensajeError = '';
-
-    // Expresión regular para validar la contraseña
-    const passwordPattern = /^(?=.*\d{4})(?=.*[a-zA-Z]{3})(?=.*[A-Z]).{8,}$/;
 
     // Validar campos del formulario y almacenar mensajes de error
     if (this.usuario.length < 3) {
       mensajeError = 'El nombre de usuario debe tener al menos 3 caracteres.';
-    } else if (!passwordPattern.test(this.contrasena)) {
-      mensajeError = 'La contraseña debe tener al menos 4 números, 3 caracteres y 1 mayúscula.';
-    } else if (fechaNacimientoDate > hoy) {
-      mensajeError = 'La fecha de nacimiento debe ser anterior o igual a la fecha de hoy.';
+    } else if (this.contrasena.length < 8) {
+      mensajeError = 'La contraseña debe tener al menos 8 caracteres.';
+    } else if (!emailPattern.test(this.correo)) {
+      mensajeError = 'El correo electrónico no es válido.';
+    } else if (this.fechaNacimiento === '' || fechaNacimientoDate > hoy) {
+      mensajeError = 'La fecha de nacimiento no es válida.';
     } else if (this.contrasena !== this.recontrasena) {
       mensajeError = 'Las contraseñas no coinciden.';
     }
@@ -48,11 +50,9 @@ export class RegisterPage {
       this.navCtrl.navigateForward(['/login']);
     } else {
       // Mostrar un mensaje de error si los campos no cumplen con los requisitos
-      this.mostrarToast('Verifica tus datos e intenta nuevamente');
+      this.mostrarToast(mensajeError);
     }
   }
-
-
 
   async mostrarToast(message: string) {
     const toast = await this.toastCtrl.create({
@@ -63,3 +63,4 @@ export class RegisterPage {
     await toast.present();
   }
 }
+

@@ -18,8 +18,9 @@ const routes: Routes = [
   {
     path: 'resetpass',
     loadChildren: () => import('./resetpass/resetpass.module').then( m => m.ResetpassPageModule)
-  },  {
-    path: 'not-found',
+  },
+  {
+    path: '**',
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
 

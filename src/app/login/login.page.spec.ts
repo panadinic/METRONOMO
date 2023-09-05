@@ -5,13 +5,18 @@ describe('LoginPage', () => {
   let component: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [LoginPage], // Asegúrate de declarar el componente aquí
+    }).compileComponents();
+
     fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
+  

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-resetpass',
@@ -9,7 +11,7 @@ import { NavController, ToastController } from '@ionic/angular';
 export class ResetpassPage {
   email: string = '';
 
-  constructor(private navCtrl: NavController, private toastCtrl: ToastController) {}
+  constructor(private navCtrl: NavController, private toastCtrl: ToastController, private router: Router) {}
 
   enviarCorreo() {
     // Aquí debes implementar la lógica para enviar un correo de restablecimiento de contraseña.
@@ -17,6 +19,7 @@ export class ResetpassPage {
 
     // Ejemplo de una notificación de éxito
     this.mostrarToast('Se ha enviado un enlace de restablecimiento de contraseña a tu correo electrónico.');
+    this.router.navigate(['/login']);
   }
 
   async mostrarToast(message: string) {

@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import {  NavController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +20,7 @@ export class HomePage {
   private interval: any;
   private isPlaying: boolean = false;
 
-  constructor(private platform: Platform, private navCtrl: NavController ) {
+  constructor(private platform: Platform, private router: Router) {
 
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
@@ -94,6 +93,6 @@ export class HomePage {
     }
   }
   volver() {
-    this.navCtrl.navigateBack(['/login']);
+    this.router.navigate(['/login']);
   }
 }

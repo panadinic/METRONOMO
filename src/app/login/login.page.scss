@@ -71,3 +71,11 @@ ion-content {
 }
 
 
+.login-page {
+  background-color:aqua !important;
+}
+
+ion-card {
+  background: transparent; /* Establece un fondo transparente o el color que desees */
+  box-shadow: none; /* Elimina la sombra predeterminada si no la deseas */
+}

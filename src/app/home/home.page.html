@@ -25,8 +25,8 @@
     <ion-row class="row">
       <ion-col>
         <ion-range class="tempo-variation" [(ngModel)]="tempoVariation" (ionChange)="onSliderChange($event)">
-          <ion-label slot="start">Lento</ion-label>
-          <ion-label slot="end">Rápido</ion-label>
+          <ion-label slot="start">40BPM</ion-label>
+          <ion-label slot="end">300BPM</ion-label>
         </ion-range>
       </ion-col>
     </ion-row>
@@ -45,15 +45,25 @@
             <ion-label>Métrica:</ion-label>
             <ion-select [(ngModel)]="metric">
               <ion-select-option value="4/4">4/4</ion-select-option>
-              <ion-select-option value="3/4">4/4</ion-select-option>
+              <ion-select-option value="3/4">3/4</ion-select-option>
               <ion-select-option value="6/8">6/8</ion-select-option>
               <!-- Agrega más opciones según tus necesidades -->
             </ion-select>
           </ion-item>
+          <ion-item>
+            <ion-label>Sonido:</ion-label>
+            <ion-select [(ngModel)]="selectedSound">
+              <ion-select-option *ngFor="let sound of soundOptions" [value]="sound">{{ sound.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
         </div>
       </ion-col>
       <ion-col size="6">
-        <ion-toggle [(ngModel)]="metronomeOn" (ionChange)="toggleMetronome()">ON/OFF</ion-toggle>
+
+        <ion-toggle [checked]="metronomeOn" (ionChange)="toggleMetronome()"></ion-toggle>
+
+
       </ion-col>
     </ion-row>
   </ion-grid>

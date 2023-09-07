@@ -26,8 +26,8 @@ export class LoginPage {
 
     if (this.username.length >= 3 && this.username.length <= 8) {
       if (passwordPattern.test(this.password)) {
-        localStorage.setItem('username', this.username);
-        this.router.navigate(['/home']);
+
+        this.router.navigate(['/home', { username: this.username }]);
       } else {
         this.showToast('La contraseña debe cumplir con los requisitos.');
       }

@@ -4,6 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content class="ion-padding fade-in" fullscreen="true">
   <ion-grid class="content-grid">
     <ion-row class="row">
@@ -32,6 +33,9 @@
     </ion-row>
     <ion-row class="row">
       <ion-col>
+        <div class="custom-volume-icon-container">
+          <ion-icon name="volume-high-outline" class="volume-icon"></ion-icon>
+        </div>
         <ion-range class="volume" [(ngModel)]="volume">
           <ion-label slot="start">Silencio</ion-label>
           <ion-label slot="end">Máximo</ion-label>
@@ -58,7 +62,7 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-button (click)="volver()" >Volver</ion-button>
+<ion-button (click)="volver()">Volver</ion-button>
 
 <audio #clickSound hidden>
   <source src="assets/BEAT.mp3" type="audio/mpeg">

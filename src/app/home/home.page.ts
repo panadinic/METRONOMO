@@ -2,18 +2,23 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
   sliderValue: number = 20;
   tempoVariation: number = 50;
   volume: number = 50;
   metric: string = '4/4';
   metronomeOn: boolean = false;
+  isMuted: boolean = false;
 
   username: string = '';
   @ViewChild('clickSound') clickSound: any;
@@ -31,7 +36,7 @@ export class HomePage {
 
     selectedSound: any = this.soundOptions[0];
 
-  constructor(private platform: Platform, private router: Router, private route: ActivatedRoute) {
+    constructor(private platform: Platform, private router: Router, private route: ActivatedRoute, private navCtrl: NavController ){
 
     this.route.params.subscribe(params => {
       this.username = params['username'];
@@ -39,11 +44,31 @@ export class HomePage {
 
     this.sliderValue = 40;
 
-
-
-
-
   }
+
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+  
+    if (this.isMuted) {
+      this.muteSound();
+    } else {
+      this.unmuteSound();
+    }
+  }
+  
+  private muteSound() {
+    // Pausar o silenciar el sonido según tu lógica específica
+    // Ejemplo para un elemento de audio HTML:
+    this.clickSound.nativeElement.muted = true;
+  }
+  
+  private unmuteSound() {
+    // Reanudar o restablecer el sonido según tu lógica específica
+    // Ejemplo para un elemento de audio HTML:
+    this.clickSound.nativeElement.muted = false;
+  }
+
+
 
   increaseBPM() {
     // Implementa la lógica para aumentar el valor del ritmo (bpm)

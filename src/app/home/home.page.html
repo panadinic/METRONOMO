@@ -32,6 +32,10 @@
     </ion-row>
     <ion-row class="row">
       <ion-col>
+        <div class="custom-volume-icon-container">
+          <ion-icon name="volume-high-outline" class="volume-icon" *ngIf="!isMuted" (click)="toggleMute()"></ion-icon>
+          <ion-icon name="volume-mute-outline" class="volume-icon" *ngIf="isMuted" (click)="toggleMute()"></ion-icon>
+        </div>
         <ion-range class="volume" [(ngModel)]="volume">
           <ion-label slot="start">Silencio</ion-label>
           <ion-label slot="end">Máximo</ion-label>
@@ -50,20 +54,17 @@
               <!-- Agrega más opciones según tus necesidades -->
             </ion-select>
           </ion-item>
+ 
           <ion-item>
             <ion-label>Sonido:</ion-label>
             <ion-select [(ngModel)]="selectedSound">
               <ion-select-option *ngFor="let sound of soundOptions" [value]="sound">{{ sound.name }}</ion-select-option>
             </ion-select>
           </ion-item>
-
         </div>
       </ion-col>
       <ion-col size="6">
-
         <ion-toggle [checked]="metronomeOn" (ionChange)="toggleMetronome()"></ion-toggle>
-
-
       </ion-col>
     </ion-row>
   </ion-grid>

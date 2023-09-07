@@ -24,8 +24,6 @@
 }
 
 
-
-
 /* Define la animación fade-in */
 @keyframes fade-in {
   from {
@@ -41,3 +39,15 @@
 }
 
 
+/* Estilo para el contenedor del icono de volumen */
+.custom-volume-icon {
+  display: flex;
+  justify-content: flex-start; /* Alinea el icono a la izquierda */
+  align-items: flex-start; /* Alinea verticalmente arriba */
+}
+
+/* Estilo para el icono de volumen */
+.volume-icon {
+  font-size: 32px; /* Tamaño personalizado */
+  transform: translateY(-75px); /* Ajusta la posición vertical hacia arriba */
+}

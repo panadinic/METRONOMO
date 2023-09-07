@@ -14,6 +14,9 @@ export class HomePage {
   volume: number = 50;
   metric: string = '4/4';
   metronomeOn: boolean = false;
+  isMuted: boolean = false;
+
+  
 
   username: string = '';
   @ViewChild('clickSound') clickSound: any;
@@ -22,13 +25,34 @@ export class HomePage {
   private isPlaying: boolean = false;
 
   constructor(private platform: Platform, private navCtrl: NavController ) {
-
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
       this.username = storedUsername;
     }
   }
 
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+  
+    if (this.isMuted) {
+      this.muteSound();
+    } else {
+      this.unmuteSound();
+    }
+  }
+  
+  private muteSound() {
+    // Pausar o silenciar el sonido según tu lógica específica
+    // Ejemplo para un elemento de audio HTML:
+    this.clickSound.nativeElement.muted = true;
+  }
+  
+  private unmuteSound() {
+    // Reanudar o restablecer el sonido según tu lógica específica
+    // Ejemplo para un elemento de audio HTML:
+    this.clickSound.nativeElement.muted = false;
+  }
+  
   increaseBPM() {
     // Implementa la lógica para aumentar el volumen
     if (this.volume < 100) {

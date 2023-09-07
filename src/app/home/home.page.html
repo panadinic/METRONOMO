@@ -34,7 +34,8 @@
     <ion-row class="row">
       <ion-col>
         <div class="custom-volume-icon-container">
-          <ion-icon name="volume-high-outline" class="volume-icon"></ion-icon>
+          <ion-icon name="volume-high-outline" class="volume-icon" *ngIf="!isMuted" (click)="toggleMute()"></ion-icon>
+          <ion-icon name="volume-mute-outline" class="volume-icon" *ngIf="isMuted" (click)="toggleMute()"></ion-icon>
         </div>
         <ion-range class="volume" [(ngModel)]="volume">
           <ion-label slot="start">Silencio</ion-label>
